@@ -1,7 +1,7 @@
 <?php
-error_reporting(0);
-session_start();
-include_once("includes/header.php");
+    error_reporting(0);
+    session_start();
+    include_once("includes/header.php");
 $productCnt = 0;
 $limit = 12;
 $currentPage = 1;

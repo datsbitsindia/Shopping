@@ -142,8 +142,11 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfmCVTjRI007pC1Yk2o2d_EhgkjTsFVN8"></script>
     <!-- google map active js -->
     <script src="assets/js/plugins/google-map.js"></script>
+
+    <script src="assets/js/jquery.validate.min.js"></script>
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/my-script.js"></script>
     <script src="assets/js/custom.js"></script>
 </body>
 

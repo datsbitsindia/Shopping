@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js" lang="en">
-<?php session_start(); ?>
-<?php include_once("constant.php"); 
+<?php
+ include_once("constant.php"); 
  $item_quantity = 0;
  $total_price = 0;
 ?>

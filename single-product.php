@@ -1,7 +1,7 @@
 <?php
-error_reporting(0);
-session_start();
-include_once("includes/header.php");
+    error_reporting(0);
+    session_start();
+    include_once("includes/header.php");
 
       $curl = curl_init();        
       if (isset($_REQUEST['product_id'])) 

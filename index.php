@@ -1,4 +1,8 @@
-<?php include_once("includes/header.php"); ?>
+<?php  
+    error_reporting(0);
+    session_start();  
+    include_once("includes/header.php"); 
+?>
 <?php 
 
 $curl = curl_init();
