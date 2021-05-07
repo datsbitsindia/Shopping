@@ -47,12 +47,12 @@
                             <h6 class="widget-title">Information</h6>
                             <div class="widget-body">
                                 <ul class="info-list">
-                                    <li><a href="#">about us</a></li>
-                                    <li><a href="#">Delivery Information</a></li>
-                                    <li><a href="#">privet policy</a></li>
-                                    <li><a href="#">Terms & Conditions</a></li>
-                                    <li><a href="#">contact us</a></li>
-                                    <li><a href="#">site map</a></li>
+                                    <li><a href="<?php echo baseUrl; ?>cms_pages.php?type=aboutus">about us</a></li>
+                                    <li><a href="<?php echo baseUrl; ?>cms_pages.php?type=aboutus">Delivery Information</a></li>
+                                    <li><a href="<?php echo baseUrl; ?>cms_pages.php?type=policy">privet policy</a></li>
+                                    <li><a href="<?php echo baseUrl; ?>cms_pages.php?type=terms">Terms & Conditions</a></li>
+                                    <li><a href="<?php echo baseUrl; ?>cms_pages.php?type=contactus">contact us</a></li>
+                                    <li><a href="<?php echo baseUrl; ?>cms_pages.php?type=aboutus">site map</a></li>
                                 </ul>
                             </div>
                         </div>
