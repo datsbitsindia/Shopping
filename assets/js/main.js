@@ -431,7 +431,7 @@
 
 
 	//nice select active start
-	$('select').niceSelect();
+	$('.nice-select').niceSelect();
 
 
 	// Image zoom effect

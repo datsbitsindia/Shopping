@@ -143,9 +143,15 @@
                                                 <i class="pe-7s-user"></i>
                                             </a>
                                             <ul class="dropdown-list">
-                                                <li><a href="login-register.html">login</a></li>
-                                                <li><a href="login-register.html">register</a></li>
-                                                <li><a href="my-account.html">my account</a></li>
+                                                <?php   
+                                                        if (!empty($_SESSION['userid'])) {
+                                                            echo '<li><a href="myaccount.php">my account</a></li>';
+                                                            echo '<li><a href="logout.php">logout</a></li>';
+                                                        }else{
+                                                            echo '<li><a href="login.php">login</a></li>';
+                                                            echo '<li><a href="register.php">register</a></li>';
+                                                        }
+                                                ?>                                                
                                             </ul>
                                         </li>
                                         <li>

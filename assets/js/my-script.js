@@ -48,13 +48,13 @@ function verifyMobileNo () {
 	var mobileno = $("#mobileno").val();
 	$.ajax({
 		type : 'POST',
-		url : baseUrl+'verifyMobileNo.php',
+		url : baseUrl+'includes/verifyMobileNo.php',
 		data : {'type':'verify-user','mobile':mobileno},
 		dataType : 'json',
 		success : function(data) {
 			alert(data['message']);
 			if(data['error'] == 1) {
-				window.location.href = baseUrl+'login.php';
+				window.location.href = baseUrl+'register.php';
 			} else {
 				$("#isValidMobileNo").val('1');
 			}
@@ -69,13 +69,13 @@ function verifyEmail() {
 	var emailId = $("#emailId").val();
 	$.ajax({
 		type : 'POST',
-		url : baseUrl+'verifyEmail.php',
+		url : baseUrl+'includes/verifyEmail.php',
 		data : {'type':'verify-user-email','emailId':emailId},
 		dataType : 'json',
 		success : function(data) {
 			alert(data['message']);
 			if(data['error'] == 1) {
-				window.location.href = baseUrl+'login.php';
+				window.location.href = baseUrl+'register.php';
 			} else {
 				$("#isValidEmail").val('1');
 			}
