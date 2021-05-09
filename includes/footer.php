@@ -150,6 +150,5 @@
     <script src="assets/js/custom.js"></script>
 </body>
 
-
 <!-- Mirrored from demo.hasthemes.com/corano-preview/corano/index-5.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 25 Apr 2021 15:56:12 GMT -->
 </html>

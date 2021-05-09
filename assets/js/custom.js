@@ -1,3 +1,4 @@
+
 function getSliderSettings(){
     return {
         autoplay: false,
@@ -137,3 +138,21 @@ function getCategoryWiseData(category_id,category_name,baseUrl) {
 	});	
 	// window.location.href = baseUrl+"index.php?type="+type+"&category_id="+category_id+"&category_name="+category_name;
 }
+
+
+
+$(document).on('submit', '.add_product_storage', function (event) {
+    event.preventDefault();
+	$.ajax({
+        method : "POST",
+        url : base_url+'/includes/commonFile.php',
+        data : $(this).serialize(),
+        success : function(res){
+            // $('#header_item_quantity').text(5);
+            // $('#header_total_price').text(5);
+            alert(res);
+        }, error:function(error){
+            console.log(error);
+        }
+    })
+});

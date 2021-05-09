@@ -54,7 +54,7 @@
                                                     $cart_total_price += $item['price'] * $item['quantity']; 
                                                     echo'<tr>';
                                                     echo'    <td>';
-                                                    echo'        <a href="product-details.html">';
+                                                    echo'        <a href="'.baseUrl.'single-product.php?product_id='.$item['id'].'">';
                                                     echo'            '.$item['name'].' <strong> × '.$item['quantity'].'</strong>';
                                                     echo'        </a>';
                                                     echo'    </td>';

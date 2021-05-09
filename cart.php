@@ -77,18 +77,20 @@ if(isset($_GET['action'])) {
                                     ?>
                                         <tr class="cart_items_calculate">
                                             <td class="pro-thumbnail">
-                                                <a href="#">
+                                                <a href="<?php echo baseUrl; ?>single-product.php?product_id=<?php echo $item['id']; ?>">
                                                     <img class="img-fluid"  src="<?php echo $item['image']; ?>" alt="Product" />
                                                 </a>
                                             </td>
                                             <td class="pro-title">
-                                                <a href="#">
+                                                <a href="<?php echo baseUrl; ?>single-product.php?product_id=<?php echo $item['id']; ?>">
                                                     <?php echo $item['name']; ?>
                                                 </a>
                                             </td>
                                             <td class="pro-price"><span><?php echo $item['price'] ?>QAR</span></td>
                                             <td class="pro-quantity" >
-                                                <div class="pro-qty" min="1" id="<?php echo $item['id']; ?>"><input type="text" disabled value="<?php echo $item['quantity'] ?>" id="itemQty_<?php echo $item['id']; ?>"></div>
+                                                <div class="pro-qty" min="1" id="<?php echo $item['id']; ?>">
+                                                    <input type="text" disabled value="<?php echo $item['quantity'] ?>" id="itemQty_<?php echo $item['id']; ?>">
+                                                </div>
                                             </td>
                                             <td class="pro-subtotal">                                                
                                                 <input type="hidden" id="itemPrice_<?php echo $item['id']; ?>" value="<?php echo $item['price']; ?>">

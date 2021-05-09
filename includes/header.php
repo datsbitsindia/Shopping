@@ -157,9 +157,9 @@
                                         <li>
                                             <a href="#" class="minicart-btn">
                                                 <i class="pe-7s-shopbag"></i>
-                                                <div class="notification"><?php echo $item_quantity ?></div>
+                                                <div class="notification"><span id="header_item_quantity"><?php echo $item_quantity; ?></span></div>
                                             </a>
-                                            <p><?php echo $total_price; ?>QAR</p>
+                                            <p><span id="header_total_price"><?php echo $total_price; ?></span>QAR</p>
                                         </li>
                                     </ul>
                                 </div>
@@ -405,6 +405,7 @@
 
 
 <script type="text/javascript">
+   var base_url = "<?php echo baseUrl ?>";
    function googleTranslateElementInit() {
         new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: "ar,en"}, 'google_translate_element');
     }

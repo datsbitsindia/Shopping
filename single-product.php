@@ -112,7 +112,6 @@ if(isset($_GET['action'])) {
                 <!-- product details wrapper start -->
                 <div class="col-lg-12 order-1 order-lg-2">
                     <!-- product details inner end -->
-                    <form method="post" action="single-product.php?action=add&product_id=<?php echo $data->data[0]->id; ?>">
                     <div class="product-details-inner">
                         <?php
                             $final_price = 0;
@@ -164,7 +163,10 @@ if(isset($_GET['action'])) {
                                         <div class="pro-review">
                                             <span>1 Reviews</span>
                                         </div>
-                                    </div> -->         
+                                    </div> -->     
+                                    <form method="post" class="add_product_storage" >
+                                                       
+                                     
                                     <div class="price-box">
                                         <span class="price-regular"><?php echo $data->data[0]->variants[0]->discounted_price;  ?> QAR</span>
                                         <span class="price-old"><del><?php echo $data->data[0]->variants[0]->price;  ?> QAR</del></span>
@@ -216,6 +218,11 @@ if(isset($_GET['action'])) {
                                                         $final_price = $data->data[0]->variants[0]->price;
                                                     }
                                     ?>   
+                                        <input type="hidden" value="addCart" name="type">
+                                        <input type="hidden" value="<?php echo $data->data[0]->id; ?>" name="id">
+                                        <input type="hidden" value="<?php echo $data->data[0]->name; ?>" name="name">
+                                        <input type="hidden" value="<?php echo $final_price; ?>" name="final_price">
+                                        <input type="hidden" value="<?php echo $data->data[0]->image; ?>" name="image">  
                                     <!-- <div class="color-option">
                                         <h6 class="option-title">color :</h6>
                                         <ul class="color-categories">
@@ -245,11 +252,11 @@ if(isset($_GET['action'])) {
                                         <a class="pinterest" href="#"><i class="fa fa-pinterest"></i>save</a>
                                         <a class="google" href="#"><i class="fa fa-google-plus"></i>share</a>
                                     </div> -->
+                                    </form>   
                                 </div>
                             </div>
                         </div>
                     </div>
-                    </form>
                     <!-- product details inner end -->
 
                     <!-- product details reviews start -->

@@ -212,10 +212,14 @@ if ($err) {
                                                         title="Quick View"><i class="pe-7s-search"></i></span></a>
                                             </div>
                                             <div class="cart-hover">
-                                                <form method="post" action="single-product.php?action=add&product_id=<?php echo $value->id; ?>">
+                                                <form method="post" class="add_product_storage" >
+                                                    <input type="hidden" value="addCart" name="type">
+                                                    <input type="hidden" value="<?php echo $value->id; ?>" name="id">
                                                     <input type="hidden" value="1" name="qty">
-                                                    <input type="hidden" value="<?php echo $value->name."=".$final_price."=".$value->image; ?>" name="productData">                              
-                                                    <button type="submit" class="btn btn-cart">add to cart</button>
+                                                    <input type="hidden" value="<?php echo $value->name; ?>" name="name">
+                                                    <input type="hidden" value="<?php echo $final_price; ?>" name="final_price">
+                                                    <input type="hidden" value="<?php echo $value->image; ?>" name="image">                            
+                                                    <button type="submit"  class="btn btn-cart">add to cart</button>
                                                 </form>  
                                             </div>
                                         </figure>
