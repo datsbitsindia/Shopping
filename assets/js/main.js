@@ -460,8 +460,8 @@
 	});
 
 	// quantity change js
-    $('.pro-qty').prepend('<span class="count-btn dec qtybtn">-</span>');
-    $('.pro-qty').append('<span class="count-btn inc qtybtn">+</span>');
+    $('.pro-qty').prepend('<span class="dec qtybtn" data-type="dec">-</span>');
+    $('.pro-qty').append('<span class="inc qtybtn" data-type="inc">+</span>');
     $('.qtybtn').on('click', function () {
         var $button = $(this);
         var oldValue = $button.parent().find('input').val();

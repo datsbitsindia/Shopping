@@ -148,11 +148,64 @@ $(document).on('submit', '.add_product_storage', function (event) {
         url : base_url+'/includes/commonFile.php',
         data : $(this).serialize(),
         success : function(res){
-            // $('#header_item_quantity').text(5);
-            // $('#header_total_price').text(5);
+            cartRender();
             alert(res);
         }, error:function(error){
             console.log(error);
         }
     })
 });
+
+$(document).on('click', '.cart_pro_qty', function (event) {
+    event.preventDefault();
+    $.ajax({
+        method : "POST",
+        url : base_url+'/includes/commonFile.php',
+        data : {'id':$(this).parent('.pro-qty').attr('id'),'type':'updateCart','name_type':$(this).data('type')},
+        success : function(res){
+            cartRender();
+            alert(res);
+        }, error:function(error){
+            console.log(error);
+        }
+    });
+});
+
+
+function cartRemove(id) {
+	$.ajax({
+        method : "POST",
+        url : base_url+'/includes/commonFile.php',
+        data : {'id':id,'type':'removeCart'},
+        success : function(res){
+            cartRender();
+            alert(res);
+        }, error:function(error){
+            console.log(error);
+        }
+    })
+}
+
+function cartRender() {
+    $('#minicartinnercontent_update').empty(); 
+    $('#cart_page_updated').empty(); 
+	$.ajax({
+        method : "GET",
+        url : base_url+'/includes/cartUpdate.php',
+        success : function(res){
+           $('#minicartinnercontent_update').append(res); 
+        }, error:function(error){
+            console.log(error);
+        }
+    })
+	$.ajax({
+        method : "GET",
+        url : base_url+'/includes/cartPageUpdate.php',
+        success : function(res){
+           $('#cart_page_updated').append(res); 
+        }, error:function(error){
+            console.log(error);
+        }
+    })
+}
+

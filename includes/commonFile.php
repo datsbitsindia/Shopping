@@ -107,12 +107,56 @@ if(isset($_POST['type']))
 
 	if($type == 'updateCart') 
 	{
-		$productId= $_POST['productId'];
-		$qty= $_POST['qty'];
-		session_start();
-		$_SESSION['cart_item'][$productId]['quantity'] = $qty;
+		$productId= $_POST['id'];
+		if(!empty($_SESSION["cart_item"])) 
+		{
+			foreach($_SESSION["cart_item"] as $k => $v) 
+			{
+				if($v['id'] == $productId) 
+				{
+					
+					if(empty($_SESSION["cart_item"][$k]["quantity"]) || intval($_SESSION["cart_item"][$k]["quantity"]) < 0) 
+					{
+						unset($_SESSION["cart_item"][$k]);
+						
+					}
+					if($_POST['name_type'] == 'inc'){
+						$_SESSION["cart_item"][$k]["quantity"] += 1;
+					}else if($_POST['name_type'] == 'dec'){
+						if(intval($_SESSION["cart_item"][$k]["quantity"]) - 1 == 0){
+							unset($_SESSION["cart_item"][$k]);
+						}else{
+							$_SESSION["cart_item"][$k]["quantity"] -= 1;
+						}						
+					}
+					
+				}
+			}
+		}
+
 		echo 'Cart Update Success.';
 	}
+
+	if ($type == 'removeCart')
+    {
+        if(!empty($_SESSION["cart_item"])) {
+            foreach($_SESSION["cart_item"] as $k => $v) 
+            {
+                if($_POST["id"] == $k)
+                {
+                    unset($_SESSION["cart_item"][$k]);
+                }       
+                if(empty($_SESSION["cart_item"]))
+                {
+                    unset($_SESSION["cart_item"]);
+                }
+            }
+            header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
+            header("Pragma: no-cache"); // HTTP 1.0.
+            header("Expires: 0");
+			echo 'Cart Remove Success';
+        }
+    }
 
 	if($type == 'addCart') {
 		$product_qty = $_POST['qty'];

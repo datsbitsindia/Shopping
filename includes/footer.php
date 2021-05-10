@@ -112,6 +112,7 @@
     <!-- footer area end -->
 
 
+
     <!-- Modernizer JS -->
     <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
     <!-- jQuery JS -->
@@ -148,6 +149,14 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/my-script.js"></script>
     <script src="assets/js/custom.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            cartRender();
+        });
+       
+    </script>
+
 </body>
 
 <!-- Mirrored from demo.hasthemes.com/corano-preview/corano/index-5.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 25 Apr 2021 15:56:12 GMT -->
