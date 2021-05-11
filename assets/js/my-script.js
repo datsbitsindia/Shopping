@@ -29,7 +29,7 @@ $(document).ready(function(){
 	var currentUrl = window.location.href;
 	console.log(currentUrl);
 	$(".main-menu li").each(function(){
-		if($(this).attr('id') == currentUrl) {
+		if($(this).attr('class') == currentUrl) {
 			$(this).addClass('active');
 		}
 	});
