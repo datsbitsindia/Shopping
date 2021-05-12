@@ -5,7 +5,7 @@ include_once("constant.php");
 if (isset($_SESSION['userid']) && $_SESSION['userid']!="")  {
 	$userId = $_SESSION['userid'];	
 } else {	
-	echo "<script>window.location.href='login.php?type=checkout';</script>";
+	echo "<script>window.location.href='".baseUrl."login.php?type=checkout';</script>";
 	die;
 }
 $mobileNo = $_SESSION['mobile'];
@@ -76,6 +76,6 @@ if ($err) {
     header("Expires: 0");
 	unset($_SESSION['cart_item']);
 	$res =json_decode($response,TRUE);
-	header('location:shop.php');
+	header('location:'.baseUrl.'shop.php');
 }
 ?>
