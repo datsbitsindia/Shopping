@@ -24,6 +24,7 @@ if(isset($_GET['action'])) {
         }
     }
 }
+
 ?>
 <?php include_once("includes/header.php"); ?>
     <main>

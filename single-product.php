@@ -189,7 +189,7 @@ if(isset($_GET['action'])) {
                                     </div>
                                     <div class="pro-size">
                                         <h6 class="option-title">size :</h6>
-                                        <select class="form-control varation_mesurment nice-select">
+                                        <select class="form-control varation_mesurment nice-select" name="product_variant_id">
                                             <?php foreach ($data->data[0]->variants as $value) 
                                             {
                                                 $option_value = $value->measurement." ".$value->measurement_unit_name;

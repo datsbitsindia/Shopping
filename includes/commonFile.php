@@ -161,17 +161,18 @@ if(isset($_POST['type']))
 	if($type == 'addCart') {
 		$product_qty = $_POST['qty'];
 		$product_id = $_POST['id'];
+		$product_variant_id = $_POST['product_variant_id'];
 		$product_price = $_POST['final_price'];
 		$product_name = $_POST['name'];
 		$product_image = $_POST['image'];
 
-		$itemArray = array('name'=>$product_name, 'id'=>$product_id, 'quantity'=>$product_qty, 'price'=>$product_price, 'image'=>$product_image);
+		$itemArray = array('name'=>$product_name,'product_variant_id'=>$product_variant_id, 'id'=>$product_id, 'quantity'=>$product_qty, 'price'=>$product_price, 'image'=>$product_image);
 		$f = 0;
 		if(!empty($_SESSION["cart_item"])) 
 		{
 			foreach($_SESSION["cart_item"] as $k => $v) 
 			{
-				if($v['id'] == $product_id) 
+				if($v['id'] == $product_id && $v['product_variant_id'] == $product_variant_id) 
 				{
 					if(empty($_SESSION["cart_item"][$k]["quantity"])) 
 					{

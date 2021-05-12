@@ -93,7 +93,7 @@
                                                 PayPal account.</p>
                                         </div>
                                     </div>
-                                    <form method="post" class="add_product_storage" >
+                                    <form action="<?php echo baseUrl; ?>includes/placeOrder.php" method="POST">
                                     <div class="summary-footer-area">
                                         <div class="custom-control custom-checkbox mb-20">
                                             <input type="hidden" value="<?php echo $cart_total_price; ?>" name="amount" />
