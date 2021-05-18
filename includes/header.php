@@ -35,6 +35,8 @@
     <link rel="stylesheet" href="assets/css/plugins/nice-select.css">
     <!-- jquery UI css -->
     <link rel="stylesheet" href="assets/css/plugins/jqueryui.min.css">
+
+    <link rel="stylesheet" href="assets/css/toastr.min.css">
     <!-- main style css -->
     <link rel="stylesheet" href="assets/css/style.css">
 
@@ -66,9 +68,9 @@
                                             <li><a href="#">€ EURO</a></li>
                                         </ul>
                                     </li> -->
-                                    <li class="language">
+                                    <!-- <li class="language">
                                         <div id="google_translate_element"></div>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -323,8 +325,9 @@
 
 <script type="text/javascript">
    var base_url = "<?php echo baseUrl ?>";
-   function googleTranslateElementInit() {
-        new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: "ar,en"}, 'google_translate_element');
-    }
+   var project_title = "Shop";
+//    function googleTranslateElementInit() {
+//         new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: "ar,en"}, 'google_translate_element');
+//     }
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>

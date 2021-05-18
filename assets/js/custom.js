@@ -139,6 +139,23 @@ function getCategoryWiseData(category_id,category_name,baseUrl) {
 	// window.location.href = baseUrl+"index.php?type="+type+"&category_id="+category_id+"&category_name="+category_name;
 }
 
+toastr.options = {
+    "closeButton": true,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": true,
+    "positionClass": "toast-top-right",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+  }
 
 
 $(document).on('submit', '.add_product_storage', function (event) {
@@ -149,7 +166,7 @@ $(document).on('submit', '.add_product_storage', function (event) {
         data : $(this).serialize(),
         success : function(res){
             cartRender();
-            alert(res);
+            toastr.success(res, project_title);
         }, error:function(error){
             console.log(error);
         }
@@ -164,7 +181,7 @@ $(document).on('click', '.cart_pro_qty', function (event) {
         data : {'id':$(this).parent('.pro-qty').attr('id'),'type':'updateCart','name_type':$(this).data('type')},
         success : function(res){
             cartRender();
-            alert(res);
+            toastr.success(res, project_title);
         }, error:function(error){
             console.log(error);
         }
@@ -179,7 +196,7 @@ function cartRemove(id) {
         data : {'id':id,'type':'removeCart'},
         success : function(res){
             cartRender();
-            alert(res);
+            toastr.success(res, project_title);
         }, error:function(error){
             console.log(error);
         }

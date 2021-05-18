@@ -82,6 +82,7 @@ if(isset($_POST['place_order']) && isset($_POST['user_id']) && !empty($_POST['pr
 
     // $user_name = $db->escapeString($_POST['user_name']);
 	$user_id = $db->escapeString($_POST['user_id']);
+	$paypal_response = $db->escapeString($_POST['paypal_response']);
 	$mobile = $db->escapeString($_POST['mobile']);
 	$wallet_balance = (isset($_POST['wallet_balance']) && is_numeric($_POST['wallet_balance']))?$db->escapeString($_POST['wallet_balance']):0;
 	$wallet_used = (isset($_POST['wallet_used']) && $_POST['wallet_used'] == 'true')?'true':'false';
@@ -260,6 +261,29 @@ if(isset($_POST['place_order']) && isset($_POST['user_id']) && !empty($_POST['pr
 			$response['order_id'] = $order_id;
 			$_SESSION['checkout']=$_POST;
 			$_SESSION['checkout']['order_id'] = $order_id;
+
+			if(!empty($order_id)){
+				$user_id = $user_id;
+				$order_id = $order_id;
+				$type = 'PAYPAL';
+				$txn_id = $paypal_response;
+				$amount = $final_total;
+				$status = 'received';
+				$message = 'Online Paypal pay';
+				$transaction_date = date('Y-m-d H:i:s');
+				$data = array(
+					'user_id' =>$user_id,
+					'order_id' =>$order_id,
+					'type' => $type,
+					'txn_id' => $txn_id,
+					'amount' => $amount,
+					'status' => $status,
+					'message' => $message,
+					'transaction_date' => $transaction_date
+				);	
+				$db->insert('transactions',$data);  // Table name, column names and respective values
+				$res = $db->getResult();
+			}
 			
 			/* send email notification for the order received */
 			$sql = "select name, email, mobile, country_code from users where id=".$user_id;

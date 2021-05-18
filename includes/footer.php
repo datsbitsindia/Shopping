@@ -144,6 +144,8 @@
     <!-- google map active js -->
     <script src="assets/js/plugins/google-map.js"></script>
 
+    <script src="assets/js/toastr.min.js"></script>
+
     <script src="assets/js/jquery.validate.min.js"></script>
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>

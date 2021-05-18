@@ -8,6 +8,12 @@ if (isset($_SESSION['userid']) && $_SESSION['userid']!="")  {
 	echo "<script>window.location.href='".baseUrl."login.php?type=checkout';</script>";
 	die;
 }
+
+if(empty($_SESSION['cart_item']) || count($_SESSION['cart_item']) == 0){
+	echo "<script>window.location.href='".baseUrl."shop.php';</script>";
+	die;
+}
+
 $mobileNo = $_SESSION['mobile'];
 $variantIds = array();
 $qtyArr = array();
@@ -21,7 +27,8 @@ $wallet_used = false;
 $final_amount = 0;
 $latitude = $_SESSION['latitude'];
 $longitude = $_SESSION['longitude'];
-$payment_method = 'COD';
+$payment_method = 'PAYPAL';
+$paypal_response = 'PAYPAL';
 $promo_code = '';
 $address = $_SESSION['address'];
 $delivery_time = 'Today - Evening (4:00pm to 7:00pm)';
@@ -44,7 +51,7 @@ $final_total = $total - ($total * ($discount / 100));
 $productVariantIds = json_encode($variantIds);
 $qty = json_encode($qtyArr);
 
-$postData = 'accesskey=90336&place_order=1&user_id='.$userId.'&mobile='.$mobileNo.'&product_variant_id='.$productVariantIds.'&quantity='.$qty.'&total='.$total.'&delivery_charge='.$delivery_charge.'&tax_amount='.$tax_amount.'&tax_percentage='.$tax_percentage.'&wallet_balance='.$wallet_balance.'&wallet_used='.$wallet_used.'&discount='.$discount.'&final_total='.$final_total.'&latitude='.$longitude.'&longitude='.$longitude.'&payment_method='.$payment_method.'&promo_code='.$promo_code.'&address=&delivery_time='.$delivery_time;
+$postData = 'accesskey=90336&place_order=1&user_id='.$userId.'&mobile='.$mobileNo.'&product_variant_id='.$productVariantIds.'&quantity='.$qty.'&total='.$total.'&delivery_charge='.$delivery_charge.'&tax_amount='.$tax_amount.'&tax_percentage='.$tax_percentage.'&wallet_balance='.$wallet_balance.'&wallet_used='.$wallet_used.'&discount='.$discount.'&final_total='.$final_total.'&latitude='.$longitude.'&longitude='.$longitude.'&payment_method='.$payment_method.'&promo_code='.$promo_code.'&address=&delivery_time='.$delivery_time'&paypal_response='.$paypal_response;
 
 $curl = curl_init();
 		curl_setopt_array($curl, array(

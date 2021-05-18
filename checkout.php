@@ -96,12 +96,13 @@
                                     <form action="<?php echo baseUrl; ?>includes/placeOrder.php" method="POST">
                                     <div class="summary-footer-area">
                                         <div class="custom-control custom-checkbox mb-20">
-                                            <input type="hidden" value="<?php echo $cart_total_price; ?>" name="amount" />
+                                            <input type="hidden" value="<?php echo $cart_total_price; ?>" name="amount" id="paypal_total_price" />
                                             <input type="checkbox" class="custom-control-input" id="terms" required />
                                             <label class="custom-control-label" for="terms">I have read and agree to
                                                 the website <a href="#">terms and conditions.</a></label>
                                         </div>
-                                        <button type="submit" class="btn btn-sqr">Place Order</button>
+                                        <!-- <button type="submit" class="btn btn-sqr">Place Order</button> -->
+                                        <div id="paypal-button"></div>
                                     </div>
                                     </form>
                                 </div>
@@ -115,3 +116,44 @@
     </main>
 
 <?php include_once("includes/footer.php"); ?>
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<script>
+paypal.Button.render({
+    // Configure environment
+    env: 'sandbox',
+    client: {
+        sandbox: 'Ab_vQN4PdJyOgjIfWMsRh42rnArS2U_hy0zTfp2DL3il8MlGJNqbovMJ0PWyS-aaWdgAYYhRo8l2kPH0',
+        // production: 'AWEYHcvZo8bX0TGxyKfkbv3X9Es7mAs5ZHzoXCT0zlwTGS4RMI5i7VFaxtbYQ1BZMdEpehh9hB8NqB-x'
+    },
+    // Customize button (optional)
+    locale: 'en_US',
+    style: {
+        size: 'small',
+        color: 'gold',
+        shape: 'pill',
+    },
+    // Set up a payment
+    payment: function (data, actions) {
+        return actions.payment.create({
+            transactions: [{
+                amount: {
+                    total: $('#paypal_total_price').val(),
+                    currency: 'USD'
+                }
+            }]
+      });
+    },
+    // Execute the payment
+    onAuthorize: function (data, actions) {
+        return actions.payment.execute()
+        .then(function () {
+            console.log(data);
+            // Show a confirmation message to the buyer
+            //window.alert('Thank you for your purchase!');
+            
+            // Redirect to the payment process page
+            // window.location = "process.php?paymentID="+data.paymentID+"&token="+data.paymentToken+"&payerID="+data.payerID+"&pid=2";
+        });
+    }
+}, '#paypal-button');
+</script>
