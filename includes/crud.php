@@ -5,7 +5,7 @@
  * @Package Database
  */
 
-define('DOMAIN_URL','https://zikzok.me/'); /* chnage to your domain here - Don't forget to add forward slash at the end like this "/" */
+define('DOMAIN_URL','http://admin.databits.in/'); /* chnage to your domain here - Don't forget to add forward slash at the end like this "/" */
 define('JWT_SECRET_KEY','AmTSQAY43Mg4NRFcDX7hrsyvoxOt3zzN'); /* chnage to your secret key here - you can set anything here - make sure same you set on android side as well */
 
 class Database{

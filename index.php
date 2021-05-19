@@ -190,7 +190,7 @@ if ($err) {
                                     <i class="pe-7s-plane"></i>
                                 </div>
                                 <div class="policy-content">
-                                    <h6>Free Shipping</h6>
+                                    <h6>Shipping all over world</h6>
                                     <p>Free shipping all order</p>
                                 </div>
                             </div>
@@ -233,6 +233,40 @@ if ($err) {
             </div>
         </div>
         <!-- service policy area end -->
+
+        <!-- banner statistics area start -->
+        <div class="banner-statistics-area section-padding">
+            <div class="container">
+                <div class="row row-20 mtn-20">
+                <?php
+                if (!empty($get_array_category->data)) 
+                {
+                    foreach ($get_array_category->data as $value) 
+                    {
+                        ?>
+                        <!-- active -->
+                        <?php if(strtolower($value->name) != 'appoinment') { ?>
+                                <div class="col-sm-6">
+                                    <figure class="banner-statistics mt-20">
+                                        <a href="#">
+                                            <img src="<?php echo $value->image; ?>" alt="product banner">
+                                        </a>
+                                        <div class="banner-content text-right">
+                                            <h5 class="banner-text1"><?php echo $value->name; ?></h5>
+                                            <h2 class="banner-text2"><?php echo $value->subtitle; ?></span></h2>
+                                            <a href="shop.php" class="btn btn-text">Shop Now</a>
+                                        </div>
+                                    </figure>
+                                </div>
+                    <?php 
+                        } 
+                    }
+                }
+                ?>
+                </div>
+            </div>
+        </div>
+        <!-- banner statistics area end -->
 
         <!-- product area start -->
         <section class="product-area section-padding">
@@ -283,51 +317,7 @@ if ($err) {
                             <div class="tab-content" id="pills-tabContent">
                                 <div class="tab-pane fade show" id="" role="tabpanel" aria-labelledby="">
                                     <div class="product-carousel-4 slick-row-10 slick-arrow-style" id="product-slider-init">
-                                        <!-- product item start -->
-                                        <div class="product-item">
-                                            <figure class="product-thumb">
-                                                <a href="product-details.html">
-                                                    <img class="pri-img" src="assets/img/product/product-1.jpg"
-                                                        alt="product">
-                                                    <img class="sec-img" src="assets/img/product/product-18.jpg"
-                                                        alt="product">
-                                                </a>
-                                                <div class="product-badge">
-                                                    <div class="product-label new">
-                                                        <span>new</span>
-                                                    </div>
-                                                    <div class="product-label discount">
-                                                        <span>10%</span>
-                                                    </div>
-                                                </div>
-                                                <div class="button-group">
-                                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="left"
-                                                        title="Add to wishlist"><i class="pe-7s-like"></i></a>
-                                                    <a href="compare.html" data-toggle="tooltip" data-placement="left"
-                                                        title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
-                                                    <a href="#" data-toggle="modal" data-target="#quick_view"><span
-                                                            data-toggle="tooltip" data-placement="left"
-                                                            title="Quick View"><i class="pe-7s-search"></i></span></a>
-                                                </div>
-                                                <div class="cart-hover">
-                                                    <button class="btn btn-cart">add to cart</button>
-                                                </div>
-                                            </figure>
-                                            <div class="product-caption">
-                                                <div class="product-identity">
-                                                    <p class="manufacturer-name"><a href="product-details.html">Gold</a>
-                                                    </p>
-                                                </div>
-                                                <h6 class="product-name">
-                                                    <a href="product-details.html">Perfect Diamond Jewelry</a>
-                                                </h6>
-                                                <div class="price-box">
-                                                    <span class="price-regular">$60.00</span>
-                                                    <span class="price-old"><del>$70.00</del></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- product item end -->
+                                  
                                     </div>
                                 </div>
                             </div>

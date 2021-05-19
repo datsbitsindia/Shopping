@@ -91,6 +91,40 @@ if ($err) {
 }
 
 ?>
+
+<?php
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => ApiUrl."get-categories.php",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => "accesskey=90336",
+            CURLOPT_HTTPHEADER => array(
+            "authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDExMTQ1MjUsInN1YiI6ImVLYXJ0IEF1dGhlbnRpY2F0aW9uIiwiaXNzIjoiZUthcnQifQ.usjg40akQHBl5A1tiKto9_aQbgjchwMCpJkhJjs3SEA",
+            "cache-control: no-cache",
+            "content-type: application/x-www-form-urlencoded",
+            "postman-token: ef719084-82cd-e69d-3f0f-7801062a62de"
+            ),
+        ));
+
+        $get_response_category = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+            echo "cURL Error #:" . $err;
+        } else {
+            //echo $response;
+        }
+        $get_array_category = json_decode($get_response_category);
+?>
+
 <main>
     <!-- breadcrumb area start -->
     <div class="breadcrumb-area">
@@ -115,8 +149,63 @@ if ($err) {
     <div class="shop-main-wrapper section-padding">
         <div class="container">
             <div class="row">
+                <!-- sidebar area start -->
+                <div class="col-lg-3 order-2 order-lg-1">
+                    <aside class="sidebar-wrapper">
+
+                        <!-- single sidebar start -->
+                        <div class="sidebar-single">
+                            <h5 class="sidebar-title">price</h5>
+                            <div class="sidebar-body">
+                                <div class="price-range-wrap">
+                                    <div class="price-range" data-min="1" data-max="1000"></div>
+                                    <div class="range-slider">
+                                        <form action="#" class="d-flex align-items-center justify-content-between">
+                                            <div class="price-input">
+                                                <label for="amount">Price: </label>
+                                                <input type="text" id="amount">
+                                            </div>
+                                            <button class="filter-btn">filter</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- single sidebar end -->
+
+                        <!-- single sidebar start -->
+                        <div class="sidebar-single">
+                            <h5 class="sidebar-title">Brand</h5>
+                            <div class="sidebar-body">
+                                <ul class="checkbox-container categories-list">
+                                <?php
+                                if (!empty($get_array_category->data)) 
+                                {
+                                    foreach ($get_array_category->data as $value) 
+                                    {
+                                        ?>
+                                        <!-- active -->
+                                        <?php if(strtolower($value->name) != 'appoinment') { ?>
+                                            <li>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" name="<?php echo "checkbox_".$value->id; ?>" value="<?php echo $value->id; ?>" class="custom-control-input shop_category_filter" id="<?php echo "checkbox_id_".$value->id; ?>">
+                                                    <label class="custom-control-label" for="<?php echo "checkbox_id_".$value->id; ?>"><?php echo $value->name; ?></label>
+                                                </div>
+                                            </li>
+                                    <?php 
+                                        } 
+                                    }
+                                }
+                                ?>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- single sidebar end -->
+                    </aside>
+                </div>
+                    <!-- sidebar area end -->
                 <!-- shop main wrapper start -->
-                <div class="col-lg-12">
+                <div class="col-lg-9 order-1 order-lg-2">
                     <div class="shop-product-wrapper">
                         <!-- shop product top wrap start -->
                         <div class="shop-top-bar">
@@ -175,7 +264,7 @@ if ($err) {
                                 foreach ($data->data as $value) 
                                 {
                             ?>
-                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="col-md-4 col-sm-6">
                                     <!-- product grid start -->
                                     <div class="product-item">
                                         <figure class="product-thumb">
@@ -383,7 +472,6 @@ $('#sortByProduct').val(buttonVal);
 $('#sortByProduct').niceSelect('update'); 
 
 $('#sortByProduct').on('change', function() {
-    console.log($(this).val());
     if($(this).val() == 'relevance'){
         window.location.replace(base_url+"shop.php?order=ASC&sort1=id");
     } else if($(this).val() == 'name_a_z'){
@@ -392,6 +480,11 @@ $('#sortByProduct').on('change', function() {
         window.location.replace(base_url+"shop.php?order=DESC&sort1=name");
     }
     // window.location.replace("http://stackoverflow.com");
+});
+
+$('.shop_category_filter').on('click', function() {
+  console.log($(this).val());
+  console.log($(this).checked);
 });
 
 </script>

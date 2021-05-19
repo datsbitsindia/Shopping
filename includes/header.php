@@ -49,7 +49,7 @@
         <!-- main header start -->
         <div class="main-header d-none d-lg-block">
             <!-- header top start -->
-            <div class="header-top bg-gray">
+            <!-- <div class="header-top bg-gray">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-6">
@@ -60,23 +60,12 @@
                         <div class="col-lg-6 text-right">
                             <div class="header-top-settings">
                                 <ul class="nav align-items-center justify-content-end">
-                                    <!-- <li class="curreny-wrap">
-                                        $ Currency
-                                        <i class="fa fa-angle-down"></i>
-                                        <ul class="dropdown-list curreny-list">
-                                            <li><a href="#">$ USD</a></li>
-                                            <li><a href="#">€ EURO</a></li>
-                                        </ul>
-                                    </li> -->
-                                    <!-- <li class="language">
-                                        <div id="google_translate_element"></div>
-                                    </li> -->
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- header top end -->
 
             <!-- header middle area start -->
@@ -190,7 +179,7 @@
                             </div>
                             <div class="mobile-menu-toggler">
                                 <div class="mini-cart-wrap">
-                                    <a href="#" class="minicart-btn">
+                                    <a href="cart.php" >
                                         <i class="pe-7s-shopbag"></i>
                                         <div class="notification"><span class="minicart_item_quantity"><?php echo $item_quantity; ?></span></div>
                                     </a>
@@ -264,28 +253,21 @@
                         <ul class="nav">
                             <li>
                                 <div class="dropdown mobile-top-dropdown">
-                                    <a href="#" class="dropdown-toggle" id="currency" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                        Currency
-                                        <i class="fa fa-angle-down"></i>
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="currency">
-                                        <a class="dropdown-item" href="#">$ USD</a>
-                                        <a class="dropdown-item" href="#">$ EURO</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="dropdown mobile-top-dropdown">
                                     <a href="#" class="dropdown-toggle" id="myaccount" data-toggle="dropdown"
                                         aria-haspopup="true" aria-expanded="false">
                                         My Account
                                         <i class="fa fa-angle-down"></i>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="myaccount">
-                                        <a class="dropdown-item" href="my-account.html">my account</a>
-                                        <a class="dropdown-item" href="login-register.html"> login</a>
-                                        <a class="dropdown-item" href="login-register.html">register</a>
+                                        <?php   
+                                                if (!empty($_SESSION['userid'])) {
+                                                    echo '<a class="dropdown-item" href="myaccount.php">my account</a>';
+                                                    echo '<a class="dropdown-item" href="logout.php">logout</a>';
+                                                }else{
+                                                    echo '<a class="dropdown-item" href="login.php">login</a>';
+                                                    echo '<a class="dropdown-item" href="register.php">register</a>';
+                                                }
+                                        ?> 
                                     </div>
                                 </div>
                             </li>

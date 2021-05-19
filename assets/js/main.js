@@ -501,11 +501,11 @@
 		max: maxPrice,
 		values: [minPrice, maxPrice],
 		slide: function (event, ui) {
-			amount.val("$" + ui.values[0] + " - $" + ui.values[1]);
+			amount.val(" " +ui.values[0] + "QAR - " + ui.values[1] + "QAR");
 		}
 	});
-	amount.val(" $" + rangeSlider.slider("values", 0) +
-		" - $" + rangeSlider.slider("values", 1)
+	amount.val(" " + rangeSlider.slider("values", 0) +
+		"QAR - " + rangeSlider.slider("values", 1) +"QAR"
 	);
 
 
